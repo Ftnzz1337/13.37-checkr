@@ -23,7 +23,7 @@ $urls = @{
     "EV"  = "https://www.voidtools.com/Everything-1.4.1.1026.x64.zip"
     "PH"  = "https://github.com/processhacker/processhacker/releases/download/v2.39/processhacker-2.39-bin.zip"
     "LAV" = "https://www.nirsoft.net/utils/lastactivityview.zip"
-    "SBA" = "https://privazer.com/ShellBagAnalyzer.exe" # Прямая ссылка на ShellBag Analyzer
+    "SBA" = "https://privazer.com/ru/shellbag_analyzer_cleaner.exe"
 }
 
 $paths = @{}
@@ -96,3 +96,4 @@ while($true) {
         break
     }
 }
+
