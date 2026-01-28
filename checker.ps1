@@ -9,11 +9,12 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 
 Clear-Host
 $BANNER = @"
-  ▄▄▄▄ ▄▄▄▄▄▄▄     ▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄         ▄▄                             
-▄█████ ▀▀▀▀████    ▀▀▀▀████ ████████         ██                ▄▄           
-   ███   ▄▄██▀       ▄▄██▀      ▄██▀   ▄████ ████▄ ▄█▀█▄ ▄████ ██ ▄█▀ ████▄ 
-   ███     ███▄        ███▄    ███     ██    ██ ██ ██▄█▀ ██    ████   ██ ▀▀ 
-   ███ ███████▀ ██ ███████▀    ███     ▀████ ██ ██ ▀█▄▄▄ ▀████ ██ ▀█▄ ██    
+ ██╗██████╗    ██████╗ ███████╗     ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗██████╗ 
+███║╚════██╗   ╚════██╗╚════██║    ██╔════╝██║  ██║██╔════╝██╔════╝██║ ██╔╝██╔══██╗
+╚██║ █████╔╝    █████╔╝    ██╔╝    ██║     ███████║█████╗  ██║     █████╔╝ ██████╔╝
+ ██║ ╚═══██╗    ╚═══██╗   ██╔╝     ██║     ██╔══██║██╔══╝  ██║     ██╔═██╗ ██╔══██╗
+ ██║██████╔╝██╗██████╔╝   ██║      ╚██████╗██║  ██║███████╗╚██████╗██║  ██╗██║  ██║
+ ╚═╝╚═════╝ ╚═╝╚═════╝    ╚═╝       ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝                                                                                
 "@
 Write-Host $BANNER -ForegroundColor Cyan
 
@@ -27,7 +28,7 @@ $urls = @{
 
 $paths = @{}
 
-Write-Host "`n[!] ПОДГОТОВКА ИНСТРУМЕНТОВ..." -ForegroundColor White
+Write-Host "`n[!] loaded" -ForegroundColor White
 
 foreach ($key in $urls.Keys) {
     $folder = Join-Path $tempDir "Checker_$key"
@@ -36,7 +37,7 @@ foreach ($key in $urls.Keys) {
     $fileName = if ($key -eq "SBA") { "shellbag_analyzer_cleaner.exe" } else { Split-Path $urls[$key] -Leaf }
     $destFile = Join-Path $folder $fileName
     
-    Write-Host "[>] Скачивание $key..." -ForegroundColor Yellow
+    Write-Host "[>] downloading assets.." -ForegroundColor Yellow
     try {
         Invoke-WebRequest -Uri $urls[$key] -OutFile $destFile -UserAgent "Mozilla/5.0" -ErrorAction Stop
         
@@ -46,7 +47,7 @@ foreach ($key in $urls.Keys) {
         }
         $paths[$key] = $folder
     } catch {
-        Write-Host "[X] Ошибка при скачивании $key" -ForegroundColor Red
+        Write-Host "[X]error loading file" -ForegroundColor Red
     }
 }
 
@@ -68,7 +69,7 @@ if (Test-Path $exeEv) {
 if (Test-Path $exeSba) {
     Start-Process $exeSba
 } else {
-    Write-Host "[X] Ошибка: Файл ShellBag не найден!" -ForegroundColor Red
+    Write-Host "[X] error shellbag" -ForegroundColor Red
 }
 
 # 3. PH и LAV
@@ -88,7 +89,7 @@ if ($wshell.AppActivate("LastActivityView")) {
     $wshell.SendKeys("{ENTER}")
 }
 
-Write-Host "`n1 - Close`n2 - holycheck" -ForegroundColor Green
+Write-Host "`n1 - Close & Clean`n2 - HolyWorld Check" -ForegroundColor Green
 
 while($true) {
     $choice = Read-Host "Select"
