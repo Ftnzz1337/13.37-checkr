@@ -12,7 +12,7 @@ if %errorLevel% == 0 (
 title Checker Launcher
 cls
 
-set "URL=https://github.com/Ftnzz1337/13.37-checkr/main/main.py"
+set "URL=https://raw.githubusercontent.com/Ftnzz1337/13.37-checkr/refs/heads/main/main.py"
 set "DEST=%TEMP%\checker_v3.py"
 
 echo [+] Downloading script...
@@ -27,4 +27,5 @@ if exist "%DEST%" (
 )
 
 del "%DEST%" >nul 2>&1
+
 exit
