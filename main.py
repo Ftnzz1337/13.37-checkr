@@ -8,6 +8,8 @@ import shutil
 import time
 import webbrowser
 
+
+# исходный код открыт, кому надо берите
 BANNER = r"""
   ▄▄▄▄ ▄▄▄▄▄▄▄     ▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄         ▄▄                             
 ▄█████ ▀▀▀▀████    ▀▀▀▀████ ████████         ██                ▄▄           
@@ -121,3 +123,4 @@ if __name__ == "__main__":
         run_logic()
     else:
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+
